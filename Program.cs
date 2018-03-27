@@ -37,7 +37,57 @@ namespace SortingExercises
 
         }
 
-       
+        private static void QuickSort(List<int> unsortedArray)
+        {
+            int startIndex = 0;
+            int endIndex = unsortedArray.Count - 1;
+            int lastIndexBeforePivot = endIndex - 1;
+            int pivot = new Random().Next(0, endIndex);
+            var tempArray = unsortedArray;
+            int temp;
+
+            
+
+            temp = unsortedArray[pivot];
+            unsortedArray[pivot] = unsortedArray[endIndex];
+            unsortedArray[endIndex] = temp;
+
+            CompareLeftAndRight(tempArray, ref startIndex, endIndex, ref lastIndexBeforePivot);
+
+        }
+
+        private static void CompareLeftAndRight(List<int> unsortedArray, ref int startIndex, int endIndex, ref int lastIndexBeforePivot)
+        {
+            int left, right;
+            for (int i = startIndex; i < endIndex; i++)
+            {
+                if (unsortedArray[i] > unsortedArray[endIndex])
+                {
+                    left = unsortedArray[i];
+                    startIndex = i;
+                }
+            }
+
+            for (int j = lastIndexBeforePivot; j > startIndex; j--)
+            {
+                if (unsortedArray[j] < unsortedArray[endIndex])
+                {
+                    right = unsortedArray[j];
+                    lastIndexBeforePivot = j;
+                }
+            }
+
+            if (startIndex < lastIndexBeforePivot)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+
+
         private static void PrintArray(List<int> unsortedArray)
         {
             foreach (var integer in unsortedArray)
